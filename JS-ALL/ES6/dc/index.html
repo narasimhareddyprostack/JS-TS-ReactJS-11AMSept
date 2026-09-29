@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live Clock</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #17252a;
+            --muted: #607277;
+            --paper: #f4f7f5;
+            --accent: #d97745;
+            --accent-dark: #a94d24;
+        }
+
+        body {
+            min-height: 100vh;
+            color: var(--ink);
+            background-color: var(--paper);
+            background-image: linear-gradient(135deg, rgba(217, 119, 69, 0.13), transparent 42%),
+                radial-gradient(circle at 90% 10%, rgba(37, 99, 93, 0.16), transparent 30%);
+        }
+
+        .clock-shell {
+            max-width: 760px;
+        }
+
+        .clock-card {
+            border: 0;
+            border-top: 6px solid var(--accent);
+            box-shadow: 0 1rem 3rem rgba(23, 37, 42, 0.12);
+        }
+
+        .eyebrow {
+            color: var(--accent-dark);
+            letter-spacing: 0.16em;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .clock-display {
+            color: var(--ink);
+            font-size: clamp(2.5rem, 10vw, 5.75rem);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+        }
+
+        .clock-note {
+            color: var(--muted);
+        }
+
+        .live-dot {
+            width: 0.65rem;
+            height: 0.65rem;
+            background-color: #26735d;
+            box-shadow: 0 0 0 0.25rem rgba(38, 115, 93, 0.14);
+        }
+    </style>
+</head>
+<body>
+    <main class="container d-flex align-items-center justify-content-center min-vh-100 py-5">
+        <section class="clock-shell w-100" aria-labelledby="clock-title">
+            <div class="clock-card card rounded-4 overflow-hidden">
+                <div class="card-body p-4 p-md-5">
+                    <div class="d-flex align-items-center gap-3 mb-5">
+                        <span class="live-dot rounded-circle" aria-hidden="true"></span>
+                        <span class="eyebrow text-uppercase">Live status</span>
+                    </div>
+
+                    <p class="eyebrow text-uppercase mb-2">Local time</p>
+                    <h1 id="clock-title" class="display-6 fw-semibold mb-3">Your current time</h1>
+                    <p class="clock-note mb-4">A simple, always-current view of the time on this device.</p>
+
+                    <div class="bg-light-subtle border rounded-3 p-3 p-md-4">
+                        <p class="small text-secondary text-uppercase fw-semibold mb-2">Now</p>
+                        <p id="abc" class="clock-display fw-semibold mb-0" aria-live="polite">--:--:--</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-dark text-white border-0 px-4 px-md-5 py-3">
+                    <small class="opacity-75">Updates automatically every second</small>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="./data.js" type="text/javascript"></script>
+</body>
+</html>
